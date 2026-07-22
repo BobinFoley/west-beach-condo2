@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const activities = [
+  {
+    title: 'The Wharf at Orange Beach',
+    description: 'A premier entertainment district with a Ferris wheel, laser light shows, dining, and boutique shopping.',
+    duration: '25 minutes away'
+  },
+  {
+    title: 'Flora-Bama',
+    description: 'The legendary Gulf Coast roadhouse straddling the Florida-Alabama line, featuring live music 365 days a year.',
+    duration: '35 minutes away'
+  },
+  {
+    title: 'Dolphin Cruises',
+    description: 'Set sail from Orange Beach marinas for guided tours to spot bottlenose dolphins in their natural habitat.',
+    duration: '20 minutes away'
+  },
+  {
+    title: 'Gulf Restaurant',
+    description: 'Dine in an open-air venue constructed from shipping containers, offering stunning views of Perdido Pass.',
+    duration: '30 minutes away'
+  }
+];
+---
+
+<Layout title="Things to Do in Orange Beach | Donna's Delight" description="Discover the best activities, dining, and attractions in Orange Beach during your stay at Donna's Delight.">
+  <main class="page-container">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <p class="kicker">Orange Beach, Alabama</p>
+        <h1>Just down the coast</h1>
+        <p>A quick drive east brings you to vibrant marinas, waterfront dining, and spectacular entertainment options.</p>
+      </div>
+    </section>
+
+    <section class="activities-section">
+      <div class="activities-grid">
+        {activities.map((activity) => (
+          <article class="activity-card">
+            <h3>{activity.title}</h3>
+            <span class="activity-duration">{activity.duration}</span>
+            <p>{activity.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    background: var(--cream);
+    min-height: calc(100vh - 172px);
+  }
+  .page-hero {
+    padding: 4rem 9vw;
+    text-align: center;
+  }
+  .page-hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .page-hero h1 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    color: var(--navy);
+  }
+  .page-hero p:not(.kicker) {
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+  .activities-section {
+    padding: 2rem 9vw 5rem;
+  }
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .activity-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px rgba(35, 64, 74, 0.05);
+    transition: transform 0.2s ease;
+  }
+  .activity-card:hover {
+    transform: translateY(-5px);
+  }
+  .activity-card h3 {
+    font-size: 1.8rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .activity-duration {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .activity-card p {
+    font-size: 0.95rem;
+    color: #526a74;
+    line-height: 1.6;
+  }
+</style>

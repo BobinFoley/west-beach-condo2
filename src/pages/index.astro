@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const amenities = [
+  ['2 bedrooms', 'A king Gulf-view suite and a comfortable guest room.'],
+  ['Sleeps 6', 'Two beds plus a queen sleeper sofa for your whole crew.'],
+  ['Beachfront', 'Wake to Gulf views and walk straight out to the sand.'],
+  ['Full kitchen', 'Everything you need for easy breakfasts and family dinners.'],
+  ['Resort pool', 'Cool off, stretch out, and stay close to the shoreline.'],
+  ['Stay connected', 'Fast Wi-Fi, smart TVs, and room to work if you must.']
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'VacationRental',
+  name: "Donna's Delight",
+  description: 'A breezy two-bedroom beachfront vacation condo on West Beach in Gulf Shores, Alabama.',
+  address: { '@type': 'PostalAddress', streetAddress: '1287 West Beach Boulevard, Unit 704', addressLocality: 'Gulf Shores', addressRegion: 'AL', postalCode: '36542', addressCountry: 'US' },
+  numberOfBedrooms: 2,
+  occupancy: { '@type': 'QuantitativeValue', maxValue: 6 }
+};
+---
+<Layout title="Donna's Delight | West Beach Gulf Shores Condo" description="Stay beachfront at Donna's Delight, a two-bedroom West Beach condo in Gulf Shores with Gulf views, a resort pool, and room for six.">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <main id="top">
+    <section class="hero">
+      <img src="/images/donnas-hero.webp" alt="Sunset over the Gulf from the balcony at Donna's Delight" />
+      <div class="hero-shade"></div>
+      <div class="hero-copy"><p class="kicker light">Your front-row seat to the Gulf</p><h1>Come for the view.<br />Stay for the feeling.</h1><p>A breezy two-bedroom beach retreat on West Beach, made for slow mornings, sandy feet, and sunset dinners on the balcony.</p><div class="hero-actions"><a class="coral-button" href="#book">Plan your stay</a><a href="#condo">Explore the condo <span>→</span></a></div></div>
+      <div class="facts"><div><strong>2</strong><span>Bedrooms</span></div><div><strong>2</strong><span>Bathrooms</span></div><div><strong>6</strong><span>Sleeps</span></div><div><strong>7th</strong><span>Floor</span></div></div>
+    </section>
+
+    <section class="welcome" id="condo">
+      <div class="welcome-copy"><p class="kicker">Welcome to West Beach</p><h2>The easy side of<br />Gulf Shores</h2><p>Donna’s Delight sits where West Beach slows down—close enough to the restaurants and attractions, but tucked away from the busiest part of town. Inside, sun-washed rooms, comfortable furnishings, and a wall of Gulf-facing glass make vacation mode feel effortless.</p><address>1287 West Beach Boulevard, Unit 704<br />Gulf Shores, Alabama 36542</address></div>
+      <figure><img src="/images/donnas-interior.webp" alt="Bright coastal living room overlooking the Gulf" /><figcaption>Bright, calm &amp; made for gathering</figcaption></figure>
+    </section>
+
+    <section class="amenities" id="amenities"><div class="section-intro"><p class="kicker">Everything you need</p><h2>Pack light. Settle right<br />in.</h2><p>Thoughtful comforts for beach days, family dinners, and the kind of mornings that don’t need an alarm.</p></div><div class="amenity-grid">{amenities.map(([title, text], i) => <article><span>0{i + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+
+    <section class="pool"><img src="/images/donnas-pool.webp" alt="Beachfront pool and boardwalk to the Gulf" /><div class="pool-shade"></div><div><p class="kicker light">From pool deck to sugar-white sand</p><h2>Beach days couldn’t<br />be easier</h2><p>Swim, sun, rinse off, and follow the boardwalk straight to the shoreline.</p></div></section>
+
+    <section class="location" id="location"><p class="kicker">Close to the fun</p><h2>Your West Beach home<br />base</h2><div class="location-grid"><div class="map" role="img" aria-label="Illustrated map showing Donna's Delight on West Beach"><div class="water">GULF OF MEXICO</div><div class="shore"></div><div class="road"></div><div class="pin">●<span>Donna’s Delight</span></div></div><div class="nearby"><div><span><strong>The beach</strong><small>Take the elevator down and follow the private boardwalk</small></span><b>1 minute</b></div><div><span><strong>The Hangout</strong><small>Music, seafood, and the heart of Gulf Shores</small></span><b>7 minutes</b></div><div><span><strong>Gulf State Park</strong><small>Trails, a pier, paddling, and wide-open coastline</small></span><b>15 minutes</b></div><div><span><strong>Orange Beach</strong><small>Marinas, restaurants, and family attractions</small></span><b>20 minutes</b></div></div></div></section>
+
+    <section class="testimonial"><div class="stars">★★★★★</div><blockquote>“The balcony became our favorite room. Coffee at sunrise, dolphins in the afternoon, and every sunset felt like it was just for us.”</blockquote><cite>— A happy guest</cite></section>
+
+    <section class="booking" id="book"><div><p class="kicker light">Your beach week starts here</p><h2>Ready for a little Gulf<br />time?</h2><p>Tell us your dates and party size. We’ll reply with availability and a simple, no-pressure answer.</p></div><form action="mailto:stay@donnasdelight.com" method="post" enctype="text/plain"><label>Arrival<input type="date" name="arrival" required /></label><label>Departure<input type="date" name="departure" required /></label><label>Guests<select name="guests"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label><label>Email<input type="email" name="email" placeholder="you@example.com" required /></label><button type="submit">Request availability</button><small>No payment required · We’ll reply personally</small></form></section>
+  </main>
+</Layout>

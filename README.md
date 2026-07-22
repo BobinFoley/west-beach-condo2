@@ -1,11 +1,18 @@
-<div align="center">
+# Donna's Delight
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Static Astro website for a fictional West Beach vacation condo in Gulf Shores, Alabama.
 
-  <h1>Built with AI Studio</h2>
+## Local development
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+```sh
+npm install
+npm run dev
+```
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Production build
 
-</div>
+```sh
+npm run build
+```
+
+The generated static site is written to `dist/` and is ready for Netlify.
